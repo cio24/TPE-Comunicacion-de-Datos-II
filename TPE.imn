@@ -4,13 +4,24 @@ node n1 {
     network-config {
 	hostname PC-VT-1
 	!
+	interface eth1
+	!
 	interface eth0
 	!
     }
     canvas c1
-    iconcoords {194.0 66.0}
-    labelcoords {199.0 47.0}
+    iconcoords {192.0 63.0}
+    labelcoords {197.0 44.0}
     interface-peer {eth0 n3}
+    services {DefaultRoute UserDefined}
+    custom-config {
+	custom-config-id service:UserDefined
+	custom-command UserDefined
+	config {
+	cmdup=('ip -6 addr add 2001:1200:0:21f1::/64 dev eth0', 'ip -6 addr add fd00:0:0:1::/64 dev eth0', )
+	}
+    }
+    interface-peer {eth1 n29}
 }
 
 node n2 {
@@ -23,9 +34,17 @@ node n2 {
 	!
     }
     canvas c1
-    iconcoords {329.0 26.0}
-    labelcoords {329.0 58.0}
+    iconcoords {329.0 25.0}
+    labelcoords {329.0 57.0}
     interface-peer {eth0 n3}
+    services {DefaultRoute SSH UserDefined}
+    custom-config {
+	custom-config-id service:UserDefined
+	custom-command UserDefined
+	config {
+	cmdup=('ip -6 addr add 2001:1200:0:21f1::1/64 dev eth0', 'ip -6 addr add fd00:0:0:1::1/64 dev eth0', )
+	}
+    }
 }
 
 node n3 {
@@ -48,10 +67,21 @@ node n4 {
     network-config {
 	hostname PC-VT-2
 	!
+	interface eth0
+	!
     }
     canvas c1
-    iconcoords {67.0 91.0}
-    labelcoords {67.0 127.0}
+    iconcoords {70.0 97.0}
+    labelcoords {70.0 133.0}
+    interface-peer {eth0 n29}
+    custom-config {
+	custom-config-id service:UserDefined
+	custom-command UserDefined
+	config {
+	cmdup=('ip -6 addr add 2001:1200:0:21f0::/64 dev eth0', 'ip -6 addr add fd00::/64 dev eth0', )
+	}
+    }
+    services {DefaultRoute UserDefined}
 }
 
 node n5 {
@@ -60,6 +90,8 @@ node n5 {
     network-config {
 	hostname ROUTER-8
 	!
+	interface eth1
+	!
 	interface eth0
 	!
     }
@@ -67,7 +99,15 @@ node n5 {
     iconcoords {89.0 213.0}
     labelcoords {89.0 245.0}
     interface-peer {eth0 n7}
-    services {IPForward}
+    services {IPForward UserDefined}
+    interface-peer {eth1 n29}
+    custom-config {
+	custom-config-id service:UserDefined
+	custom-command UserDefined
+	config {
+	cmdup=('ip -6 addr add 2001:1200:0:21f0::1/64 dev eth1', 'ip -6 addr add fd00::1/64 dev eth1', )
+	}
+    }
 }
 
 node n6 {
@@ -82,11 +122,18 @@ node n6 {
 	!
     }
     canvas c1
-    iconcoords {307.0 203.0}
-    labelcoords {307.0 235.0}
+    iconcoords {307.0 200.0}
+    labelcoords {307.0 232.0}
     interface-peer {eth0 n7}
     interface-peer {eth1 n3}
-    services {IPForward}
+    services {IPForward UserDefined}
+    custom-config {
+	custom-config-id service:UserDefined
+	custom-command UserDefined
+	config {
+	cmdup=('ip -6 addr add 2001:1200:0:21f1::2/64 dev eth1', 'ip -6 addr add fd00:0:0:1::2/64 dev eth1', )
+	}
+    }
 }
 
 node n7 {
@@ -117,6 +164,8 @@ node n8 {
     network-config {
 	hostname ROUTER-5
 	!
+	interface eth3
+	!
 	interface eth2
 	!
 	interface eth1
@@ -131,6 +180,7 @@ node n8 {
     interface-peer {eth1 n9}
     interface-peer {eth2 n11}
     services {IPForward}
+    interface-peer {eth3 n28}
 }
 
 node n9 {
@@ -174,7 +224,14 @@ node n10 {
     labelcoords {565.0 290.0}
     interface-peer {eth0 n9}
     interface-peer {eth1 n22}
-    services {IPForward}
+    services {IPForward UserDefined}
+    custom-config {
+	custom-config-id service:UserDefined
+	custom-command UserDefined
+	config {
+	cmdup=('ip -6 addr add 2001:1200:0:21f2::3/64 dev eth1', 'ip -6 addr add fd00:0:0:2::3/64 dev eth1', )
+	}
+    }
 }
 
 node n11 {
@@ -337,14 +394,14 @@ node n19 {
     type router
     model PC
     network-config {
-	hostname PC-ADM-1
+	hostname PC-ADM-2
 	!
 	interface eth0
 	!
     }
     canvas c1
     iconcoords {480.0 574.0}
-    labelcoords {480.0 606.0}
+    labelcoords {480.0 605.0}
     interface-peer {eth0 n23}
 }
 
@@ -354,10 +411,13 @@ node n20 {
     network-config {
 	hostname PC-GUEST
 	!
+	interface eth0
+	!
     }
     canvas c1
-    iconcoords {193.0 475.0}
-    labelcoords {192.0 512.0}
+    iconcoords {198.0 510.0}
+    labelcoords {197.0 547.0}
+    interface-peer {eth0 n28}
 }
 
 node n21 {
@@ -373,6 +433,14 @@ node n21 {
     iconcoords {444.0 165.0}
     labelcoords {444.0 197.0}
     interface-peer {eth0 n22}
+    custom-config {
+	custom-config-id service:UserDefined
+	custom-command UserDefined
+	config {
+	cmdup=('ip -6 addr add 2001:1200:0:21f2::2/64 dev eth0', 'ip -6 addr add fd00:0:0:2::2/64 dev eth0', )
+	}
+    }
+    services {DefaultRoute UserDefined}
 }
 
 node n22 {
@@ -445,6 +513,14 @@ node n26 {
     iconcoords {466.0 91.0}
     labelcoords {473.0 76.0}
     interface-peer {eth0 n22}
+    custom-config {
+	custom-config-id service:UserDefined
+	custom-command UserDefined
+	config {
+	cmdup=('ip -6 addr add 2001:1200:0:21f2::/64 dev eth0', 'ip -6 addr add fd00:0:0:2::/64 dev eth0', )
+	}
+    }
+    services {DefaultRoute SSH UserDefined}
 }
 
 node n27 {
@@ -460,36 +536,14 @@ node n27 {
     iconcoords {670.0 84.0}
     labelcoords {668.0 70.0}
     interface-peer {eth0 n22}
-}
-
-node n28 {
-    type wlan
-    network-config {
-	hostname wlan2
-	!
-	interface wireless
-	 ip address 10.0.0.0/32
-	 ipv6 address 2001:0::0/128
-	!
-	mobmodel
-	coreapi
-	basic_range
-	!
-    }
     custom-config {
-	custom-config-id basic_range
-	custom-command {3 3 9 9 9}
+	custom-config-id service:UserDefined
+	custom-command UserDefined
 	config {
-	range=275
-	bandwidth=54000000
-	jitter=0
-	delay=20000
-	error=0
+	cmdup=('ip -6 addr add 2001:1200:0:21f2::1/64 dev eth0', 'ip -6 addr add fd00:0:0:2::1/64 dev eth0', )
 	}
     }
-    canvas c1
-    iconcoords {264.0 482.0}
-    labelcoords {264.0 514.0}
+    services {DefaultRoute SSH UserDefined}
 }
 
 node n29 {
@@ -498,6 +552,39 @@ node n29 {
 	hostname wlan1
 	!
 	interface wireless
+	 ipv6 address 2001:1200:0:21f0::/64
+	 ip address 10.0.1.0/32
+	!
+	mobmodel
+	coreapi
+	basic_range
+	!
+    }
+    custom-config {
+	custom-config-id basic_range
+	custom-command {3 3 9 9 9}
+	config {
+	range=275
+	bandwidth=54000000
+	jitter=0
+	delay=15000
+	error=0
+	}
+    }
+    canvas c1
+    iconcoords {127.0 151.0}
+    labelcoords {127.0 183.0}
+    interface-peer {e0 n4}
+    interface-peer {e1 n5}
+    interface-peer {e2 n1}
+}
+
+node n28 {
+    type wlan
+    network-config {
+	hostname wlan28
+	!
+	interface wireless
 	 ip address 10.0.0.0/32
 	 ipv6 address 2001:0::0/128
 	!
@@ -518,8 +605,10 @@ node n29 {
 	}
     }
     canvas c1
-    iconcoords {93.0 149.0}
-    labelcoords {93.0 181.0}
+    iconcoords {273.0 488.0}
+    labelcoords {273.0 520.0}
+    interface-peer {e0 n20}
+    interface-peer {e1 n8}
 }
 
 link l1 {
@@ -652,6 +741,26 @@ link l26 {
     bandwidth 0
 }
 
+link l27 {
+    nodes {n29 n4}
+}
+
+link l28 {
+    nodes {n29 n5}
+}
+
+link l29 {
+    nodes {n29 n1}
+}
+
+link l30 {
+    nodes {n28 n20}
+}
+
+link l31 {
+    nodes {n28 n8}
+}
+
 annotation a1 {
     iconcoords {416.0 427.0 789.0 626.0}
     type rectangle
@@ -695,7 +804,7 @@ annotation a3 {
 }
 
 annotation a4 {
-    iconcoords {49.0 49.0 125.0 209.0}
+    iconcoords {36 56 128 220}
     type oval
     label {W-VENTAS}
     labelcolor black
@@ -739,7 +848,7 @@ canvas c1 {
 }
 
 option global {
-    interface_names no
+    interface_names yes
     ip_addresses yes
     ipv6_addresses yes
     node_labels yes
