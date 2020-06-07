@@ -18,7 +18,18 @@ node n1 {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 addr add 2001:1200:0:21f1::/64 dev eth0', 'ip -6 addr add fd01:1200:0:21f1::/64 dev eth0', )
+	files=('pc_vt_1.sh', )
+	cmdup=('sh pc_vt_1.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:pc_vt_1.sh
+	custom-command pc_vt_1.sh
+	config {
+	#!/bin/sh
+	# Direcciones ip
+	ip -6 addr add 2001:1200:0:21f1::/64 dev eth0
+	ip -6 addr add fd01:1200:0:21f1::/64 dev eth0
 	}
     }
     interface-peer {eth1 n29}
@@ -42,7 +53,18 @@ node n2 {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 addr add 2001:1200:0:21f1::1/64 dev eth0', 'ip -6 addr add fd01:1200:0:21f1::1/64 dev eth0', )
+	files=('servidor_ventas.sh', )
+	cmdup=('sh servidor_ventas.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:servidor_ventas.sh
+	custom-command servidor_ventas.sh
+	config {
+	#!/bin/sh
+	# Direcciones ip
+	ip -6 addr add 2001:1200:0:21f1::1/64 dev eth0
+	ip -6 addr add fd01:1200:0:21f1::1/64 dev eth0
 	}
     }
 }
@@ -78,7 +100,18 @@ node n4 {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 addr add 2001:1200:0:21f0::/64 dev eth0', 'ip -6 addr add fd01:1200:0:21f0::/64 dev eth0', )
+	files=('pc_vt_2.sh', )
+	cmdup=('sh pc_vt_2.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:pc_vt_2.sh
+	custom-command pc_vt_2.sh
+	config {
+	#!/bin/sh
+	# Direcciones ip
+	ip -6 addr add 2001:1200:0:21f0::/64 dev eth0
+	ip -6 addr add fd01:1200:0:21f0::/64 dev eth0
 	}
     }
     services {DefaultRoute UserDefined}
@@ -105,7 +138,20 @@ node n5 {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 addr add 2001:1200:0:21f0::1/64 dev eth1', 'ip -6 addr add 2001:1200:0:21f7::/127 dev eth0', 'ip -6 addr add fd01:1200:0:21f0::1/64 dev eth1', 'ip -6 addr add fd01:1200:0:21f7::/127 dev eth0', )
+	files=('router_8.sh', )
+	cmdup=('sh router_8.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:router_8.sh
+	custom-command router_8.sh
+	config {
+	#/bin/sh
+	# Direcciones ip
+	ip -6 addr add 2001:1200:0:21f0::1/64 dev eth1
+	ip -6 addr add 2001:1200:0:21f7::/127 dev eth0
+	ip -6 addr add fd01:1200:0:21f0::1/64 dev eth1
+	ip -6 addr add fd01:1200:0:21f7::/127 dev eth0
 	}
     }
 }
@@ -131,7 +177,20 @@ node n6 {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 addr add 2001:1200:0:21f1::2/64 dev eth1', 'ip -6 addr add 2001:1200:0:21f7::2/127 dev eth0', 'ip -6 addr add fd01:1200:0:21f1::2/64 dev eth1', 'ip -6 addr add fd01:1200:0:21f7::2/127 dev eth0', )
+	files=('router_7.sh', )
+	cmdup=('sh router_7.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:router_7.sh
+	custom-command router_7.sh
+	config {
+	#!/bin/sh
+	# Direcciones ip
+	ip -6 addr add 2001:1200:0:21f1::2/64 dev eth1
+	ip -6 addr add fd01:1200:0:21f1::2/64 dev eth1
+	ip -6 addr add 2001:1200:0:21f7::2/127 dev eth0
+	ip -6 addr add fd01:1200:0:21f7::2/127 dev eth0
 	}
     }
 }
@@ -160,7 +219,22 @@ node n7 {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 addr add 2001:1200:0:21f7::1/127 dev eth1', 'ip -6 addr add 2001:1200:0:21f7::3/127 dev eth0', 'ip -6 addr add 2001:1200:0:21f7::4/127 dev eth2', 'ip -6 addr add fd01:1200:0:21f7::1/127 dev eth1', 'ip -6 addr add fd01:1200:0:21f7::3/127 dev eth0', 'ip -6 addr add fd01:1200:0:21f7::4/127 dev eth2', )
+	files=('router_6.sh', )
+	cmdup=('sh router_6.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:router_6.sh
+	custom-command router_6.sh
+	config {
+	#!/bin/sh
+	# Direcciones ip
+	ip -6 addr add 2001:1200:0:21f7::1/127 dev eth1
+	ip -6 addr add 2001:1200:0:21f7::3/127 dev eth0
+	ip -6 addr add 2001:1200:0:21f7::4/127 dev eth2
+	ip -6 addr add fd01:1200:0:21f7::1/127 dev eth1
+	ip -6 addr add fd01:1200:0:21f7::3/127 dev eth0
+	ip -6 addr add fd01:1200:0:21f7::4/127 dev eth2
 	}
     }
 }
@@ -192,8 +266,25 @@ node n8 {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
+	files=('router_5.sh', )
 	startidx=02001:1200:0:21f7::5
-	cmdup=('ip -6 addr add 2001:1200:0:21f3::/64 dev eth3', 'ip -6 addr add 2001:1200:0:21f7::5/127 dev eth0', 'ip -6 addr add 2001:1200:0:21f7::6/127 dev eth1', 'ip -6 addr add 2001:1200:0:21f7::8/127 dev eth2', 'ip -6 addr add fd01:1200:0:21f3::/64 dev eth3', 'ip -6 addr add fd01:1200:0:21f7::5/127 dev eth0', 'ip -6 addr add fd01:1200:0:21f7::6/127 dev eth1', 'ip -6 addr add fd01:1200:0:21f7::8/127 dev eth2', )
+	cmdup=('sh router_5.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:router_5.sh
+	custom-command router_5.sh
+	config {
+	#!/bin/sh
+	# Direcciones ip
+	ip -6 addr add 2001:1200:0:21f3::/64 dev eth3
+	ip -6 addr add 2001:1200:0:21f7::5/127 dev eth0
+	ip -6 addr add 2001:1200:0:21f7::6/127 dev eth1
+	ip -6 addr add 2001:1200:0:21f7::8/127 dev eth2
+	ip -6 addr add fd01:1200:0:21f3::/64 dev eth3
+	ip -6 addr add fd01:1200:0:21f7::5/127 dev eth0
+	ip -6 addr add fd01:1200:0:21f7::6/127 dev eth1
+	ip -6 addr add fd01:1200:0:21f7::8/127 dev eth2
 	}
     }
 }
@@ -225,7 +316,24 @@ node n9 {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 addr add 2001:1200:0:21f7::7/127 dev eth0', 'ip -6 addr add 2001:1200:0:21f7::b/127 dev eth1', 'ip -6 addr add 2001:1200:0:21f7::c/127 dev eth2', 'ip -6 addr add 2001:1200:0:21f7::1/127 dev eth3', 'ip -6 addr add fd01:1200:0:21f7::7/127 dev eth0', 'ip -6 addr add fd01:1200:0:21f7::b/127 dev eth1', 'ip -6 addr add fd01:1200:0:21f7::c/127 dev eth2', 'ip -6 addr add fd01:1200:0:21f7::1/127 dev eth3', )
+	files=('router_4.sh', )
+	cmdup=('sh router_4.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:router_4.sh
+	custom-command router_4.sh
+	config {
+	#!/bin/sh
+	# Direcciones ip
+	ip -6 addr add 2001:1200:0:21f7::7/127 dev eth0
+	ip -6 addr add 2001:1200:0:21f7::b/127 dev eth1
+	ip -6 addr add 2001:1200:0:21f7::c/127 dev eth2
+	ip -6 addr add 2001:1200:0:21f7::1/127 dev eth3
+	ip -6 addr add fd01:1200:0:21f7::7/127 dev eth0
+	ip -6 addr add fd01:1200:0:21f7::b/127 dev eth1
+	ip -6 addr add fd01:1200:0:21f7::c/127 dev eth2
+	ip -6 addr add fd01:1200:0:21f7::1/127 dev eth3
 	}
     }
 }
@@ -251,7 +359,20 @@ node n10 {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 addr add 2001:1200:0:21f2::3/64 dev eth1', 'ip -6 addr add 2001:1200:0:21f7::a/127 dev eth0', 'ip -6 addr add fd01:1200:0:21f2::3/64 dev eth1', 'ip -6 addr add fd01:1200:0:21f7::a/127 dev eth0', )
+	files=('router_1.sh', )
+	cmdup=('sh router_1.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:router_1.sh
+	custom-command router_1.sh
+	config {
+	#!/bin/sh
+	# Direcciones ip
+	ip -6 addr add 2001:1200:0:21f2::3/64 dev eth1
+	ip -6 addr add 2001:1200:0:21f7::a/127 dev eth0
+	ip -6 addr add fd01:1200:0:21f2::3/64 dev eth1
+	ip -6 addr add fd01:1200:0:21f7::a/127 dev eth0
 	}
     }
 }
@@ -283,7 +404,22 @@ node n11 {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 addr add 2001:1200:0:21f7::9/127 dev eth0', 'ip -6 addr add 2001:1200:0:21f7::e/127 dev eth1', 'ip -6 addr add fd01:1200:0:21f7::9/127 dev eth0', 'ip -6 addr add fd01:1200:0:21f7::e/127 dev eth1', 'ip -6 addr add fd01:1200:0:21f5::/64 dev eth3', 'ip -6 addr add fd01:1200:0:21f6::/64 dev eth2', )
+	files=('router_9.sh', )
+	cmdup=('sh router_9.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:router_9.sh
+	custom-command router_9.sh
+	config {
+	#!/bin/sh
+	# Direcciones ip
+	ip -6 addr add 2001:1200:0:21f7::9/127 dev eth0
+	ip -6 addr add 2001:1200:0:21f7::e/127 dev eth1
+	ip -6 addr add fd01:1200:0:21f7::9/127 dev eth0
+	ip -6 addr add fd01:1200:0:21f7::e/127 dev eth1
+	ip -6 addr add fd01:1200:0:21f5::/64 dev eth3
+	ip -6 addr add fd01:1200:0:21f6::/64 dev eth2
 	}
     }
 }
@@ -312,7 +448,22 @@ node n12 {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 addr add 2001:1200:0:21f7::d/127 dev eth1', 'ip -6 addr add 2001:1200:0:21f7::f/127 dev eth0', 'ip -6 addr add 2001:1200:0:21f7::10/127 dev eth2', 'ip -6 addr add fd01:1200:0:21f7::d/127 dev eth1', 'ip -6 addr add fd01:1200:0:21f7::f/127 dev eth0', 'ip -6 addr add fd01:1200:0:21f7::10/127 dev eth2', )
+	files=('router_3.sh', )
+	cmdup=('sh router_3.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:router_3.sh
+	custom-command router_3.sh
+	config {
+	#!/bin/sh
+	# Direcciones ip
+	ip -6 addr add 2001:1200:0:21f7::d/127 dev eth1
+	ip -6 addr add 2001:1200:0:21f7::f/127 dev eth0
+	ip -6 addr add 2001:1200:0:21f7::10/127 dev eth2
+	ip -6 addr add fd01:1200:0:21f7::d/127 dev eth1
+	ip -6 addr add fd01:1200:0:21f7::f/127 dev eth0
+	ip -6 addr add fd01:1200:0:21f7::10/127 dev eth2
 	}
     }
 }
@@ -341,7 +492,20 @@ node n13 {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 addr add 2001:1200:0:21f7::11/127 dev eth0', 'ip -6 addr add 2001:1200:0:21f7::13/127 dev eth1', 'ip -6 addr add fd01:1200:0:21f7::11/127 dev eth0', 'ip -6 addr add fd01:1200:0:21f7::13/127 dev eth1', )
+	files=('router_2.sh', )
+	cmdup=('sh router_2.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:router_2.sh
+	custom-command router_2.sh
+	config {
+	#!/bin/sh
+	# Direcciones ip
+	ip -6 addr add 2001:1200:0:21f7::11/127 dev eth0
+	ip -6 addr add 2001:1200:0:21f7::13/127 dev eth1
+	ip -6 addr add fd01:1200:0:21f7::11/127 dev eth0
+	ip -6 addr add fd01:1200:0:21f7::13/127 dev eth1
 	}
     }
     interface-peer {eth2 n14}
@@ -402,15 +566,26 @@ node n16 {
 	!
     }
     canvas c1
-    iconcoords {966.0 497.0}
-    labelcoords {966.0 529.0}
+    iconcoords {967.0 496.0}
+    labelcoords {967.0 528.0}
     interface-peer {eth1 n17}
     services {IPForward UserDefined}
     custom-config {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 addr add 2001:1200:0:21f4::/64 dev eth1', 'ip -6 addr add fd01:1200:0:21f4::/64 dev eth1', )
+	files=('router_casa.sh', )
+	cmdup=('sh router_casa.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:router_casa.sh
+	custom-command router_casa.sh
+	config {
+	#!/bin/sh
+	# Direcciones ip
+	ip -6 addr add 2001:1200:0:21f4::/64 dev eth1
+	ip -6 addr add fd01:1200:0:21f4::/64 dev eth1
 	}
     }
     interface-peer {eth0 n15}
@@ -426,14 +601,25 @@ node n17 {
 	!
     }
     canvas c1
-    iconcoords {968.0 586.0}
-    labelcoords {970.0 617.0}
+    iconcoords {969.0 586.0}
+    labelcoords {971.0 617.0}
     interface-peer {eth0 n16}
     custom-config {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 addr add 2001:1200:0:21f4::1/64 dev eth0', 'ip -6 addr add fd01:1200:0:21f4::1/64 dev eth0', )
+	files=('pc_casa.sh', )
+	cmdup=('sh pc_casa.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:pc_casa.sh
+	custom-command pc_casa.sh
+	config {
+	#!/bin/sh
+	# Direcciones ip
+	ip -6 addr add 2001:1200:0:21f4::1/64 dev eth0
+	ip -6 addr add fd01:1200:0:21f4::1/64 dev eth0
 	}
     }
     services {DefaultRoute UserDefined}
@@ -456,7 +642,17 @@ node n18 {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 addr add fd01:1200:0:21f6::1/64 dev eth0', )
+	files=('pc_adm_1.sh', )
+	cmdup=('sh pc_adm_1.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:pc_adm_1.sh
+	custom-command pc_adm_1.sh
+	config {
+	#!/bin/sh
+	# Direcciones ip
+	ip -6 addr add fd01:1200:0:21f6::1/64 dev eth0
 	}
     }
     services {DefaultRoute UserDefined}
@@ -479,7 +675,17 @@ node n19 {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 addr add fd01:1200:0:21f5::1/64 dev eth0', )
+	files=('pc_adm_2.sh', )
+	cmdup=('sh pc_adm_2.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:pc_adm_2.sh
+	custom-command pc_adm_2.sh
+	config {
+	#!/bin/sh
+	# Direcciones ip
+	ip -6 addr add fd01:1200:0:21f5::1/64 dev eth0
 	}
     }
     services {DefaultRoute UserDefined}
@@ -502,7 +708,18 @@ node n20 {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 addr add 2001:1200:0:21f3::164 dev eth0', 'ip -6 addr add fd01:1200:0:21f3::164 dev eth0', )
+	files=('pc_guest.sh', )
+	cmdup=('sh pc_guest.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:pc_guest.sh
+	custom-command pc_guest.sh
+	config {
+	#!/bin/sh
+	# Direcciones ip
+	ip -6 addr add 2001:1200:0:21f3::164 dev eth0
+	ip -6 addr add fd01:1200:0:21f3::164 dev eth0
 	}
     }
     services {DefaultRoute UserDefined}
@@ -525,7 +742,18 @@ node n21 {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 addr add 2001:1200:0:21f2::2/64 dev eth0', 'ip -6 addr add fd01:1200:0:21f2::2/64 dev eth0', )
+	files=('pc_dc_1.sh', )
+	cmdup=('sh pc_dc_1.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:pc_dc_1.sh
+	custom-command pc_dc_1.sh
+	config {
+	#!/bin/sh
+	# Direcciones ip
+	ip -6 addr add 2001:1200:0:21f2::2/64 dev eth0
+	ip -6 addr add fd01:1200:0:21f2::2/64 dev eth0
 	}
     }
     services {DefaultRoute UserDefined}
@@ -590,7 +818,17 @@ node n25 {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 addr add fd01:1200:0:21f5::2/64 dev eth0', )
+	files=('servidor_adm.sh', )
+	cmdup=('sh servidor_adm.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:servidor_adm.sh
+	custom-command servidor_adm.sh
+	config {
+	#!/bin/sh
+	# Direcciones ip
+	ip -6 addr add fd01:1200:0:21f5::2/64 dev eth0
 	}
     }
     services {DefaultRoute SSH UserDefined}
@@ -613,7 +851,18 @@ node n26 {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 addr add 2001:1200:0:21f2::/64 dev eth0', 'ip -6 addr add fd01:1200:0:21f2::/64 dev eth0', )
+	files=('servidor_dns.sh', )
+	cmdup=('sh servidor_dns.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:servidor_dns.sh
+	custom-command servidor_dns.sh
+	config {
+	#!/bin/sh
+	# Direcciones ip
+	ip -6 addr add 2001:1200:0:21f2::/64 dev eth0
+	ip -6 addr add fd01:1200:0:21f2::/64 dev eth0
 	}
     }
     services {DefaultRoute SSH UserDefined}
@@ -636,7 +885,17 @@ node n27 {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 addr add 2001:1200:0:21f2::1/64 dev eth0', )
+	files=('servidor_web.sh', )
+	cmdup=('sh servidor_web.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:servidor_web.sh
+	custom-command servidor_web.sh
+	config {
+	#!/bin/sh
+	# Direcciones ip
+	ip -6 addr add 2001:1200:0:21f2::1/64 dev eth0
 	}
     }
     services {DefaultRoute SSH UserDefined}
@@ -701,8 +960,8 @@ node n28 {
 	}
     }
     canvas c1
-    iconcoords {270.0 490.0}
-    labelcoords {270.0 522.0}
+    iconcoords {262.0 488.0}
+    labelcoords {262.0 520.0}
     interface-peer {e0 n20}
     interface-peer {e1 n8}
 }
