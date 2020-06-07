@@ -48,8 +48,8 @@ node n2 {
 	!
     }
     canvas c1
-    iconcoords {329.0 25.0}
-    labelcoords {329.0 57.0}
+    iconcoords {329.0 26.0}
+    labelcoords {329.0 58.0}
     interface-peer {eth0 n3}
     services {DefaultRoute SSH UserDefined}
     custom-config {
@@ -225,8 +225,8 @@ node n7 {
 	!
     }
     canvas c1
-    iconcoords {220.0 296.0}
-    labelcoords {220.0 328.0}
+    iconcoords {220.0 295.0}
+    labelcoords {220.0 327.0}
     interface-peer {eth0 n6}
     interface-peer {eth1 n5}
     interface-peer {eth2 n8}
@@ -257,7 +257,7 @@ node n7 {
 	
 	#route especifico
 	ip -6 route add fd01:1200:0:21f0::/64 via fd01:1200:0:21f7:: dev eth1
-	p -6 route add fd01:1200:0:21f1::/64 via fd01:1200:0:21f7::2 dev eth0
+	ip -6 route add fd01:1200:0:21f1::/64 via fd01:1200:0:21f7::2 dev eth0
 	
 	
 	}
@@ -280,8 +280,8 @@ node n8 {
 	!
     }
     canvas c1
-    iconcoords {288.0 415.0}
-    labelcoords {288.0 447.0}
+    iconcoords {288.0 414.0}
+    labelcoords {288.0 446.0}
     interface-peer {eth0 n7}
     interface-peer {eth1 n9}
     interface-peer {eth2 n11}
@@ -777,8 +777,8 @@ node n19 {
 	!
     }
     canvas c1
-    iconcoords {480.0 574.0}
-    labelcoords {480.0 605.0}
+    iconcoords {480.0 573.0}
+    labelcoords {480.0 604.0}
     interface-peer {eth0 n23}
     custom-config {
 	custom-config-id service:UserDefined

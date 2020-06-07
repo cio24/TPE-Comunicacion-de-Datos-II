@@ -68,6 +68,11 @@ ip -6 route add fd01:1200:0:21f7::/127 via fd01:1200:0:21f7::6 dev eth0
 5
 #default rooute
 ip -6 route add default via fd01:1200:0:21f7::7 dev eth1
+ip -6 route add fd01:1200:0:21f0::/64 (W-VENTAS) via fd01:1200:0:21f7::4 (eth2 r6) dev eth0
+p -6 route add fd01:1200:0:21f1::/64 (VENTAS) via fd01:1200:0:21f7::4 (eth2 r6) dev eth0
+p -6 route add fd01:1200:0:21f7::2/127 (6-7) via fd01:1200:0:21f7::4 (eth2 r6) dev eth0
+ip -6 route add fd01:1200:0:21f7::/127 (6-8) via fd01:1200:0:21f7::4 (eth2 r6) dev eth0
+
 
 #ruteo espeficico
 ip -6 route add fd01:1200:0:21f0::/64 via fd01:1200:0:21f7::4 dev eth0
