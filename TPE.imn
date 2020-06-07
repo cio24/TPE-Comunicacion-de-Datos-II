@@ -30,6 +30,9 @@ node n1 {
 	# Direcciones ip
 	ip -6 addr add 2001:1200:0:21f1::/64 dev eth0
 	ip -6 addr add fd01:1200:0:21f1::/64 dev eth0
+	
+	#default route
+	ip -6 route add default via fd01:1200:0:21f1::2 dev eth0
 	}
     }
     interface-peer {eth1 n29}
@@ -65,6 +68,9 @@ node n2 {
 	# Direcciones ip
 	ip -6 addr add 2001:1200:0:21f1::1/64 dev eth0
 	ip -6 addr add fd01:1200:0:21f1::1/64 dev eth0
+	
+	#default route
+	ip -6 route add default via fd01:1200:0:21f1::2 dev eth0
 	}
     }
 }
@@ -112,6 +118,10 @@ node n4 {
 	# Direcciones ip
 	ip -6 addr add 2001:1200:0:21f0::/64 dev eth0
 	ip -6 addr add fd01:1200:0:21f0::/64 dev eth0
+	
+	#default route
+	
+	ip -6 route add default via fd01:1200:0:21f0::1 eth0
 	}
     }
     services {DefaultRoute UserDefined}
@@ -827,8 +837,8 @@ node n21 {
 	!
     }
     canvas c1
-    iconcoords {445.0 164.0}
-    labelcoords {445.0 196.0}
+    iconcoords {444.0 164.0}
+    labelcoords {444.0 196.0}
     interface-peer {eth0 n22}
     custom-config {
 	custom-config-id service:UserDefined
@@ -846,6 +856,9 @@ node n21 {
 	# Direcciones ip
 	ip -6 addr add 2001:1200:0:21f2::2/64 dev eth0
 	ip -6 addr add fd01:1200:0:21f2::2/64 dev eth0
+	
+	#default route
+	ip -6 route add default via fd01:1200:0:21f2::3 dev eth0
 	}
     }
     services {DefaultRoute UserDefined}
@@ -955,6 +968,9 @@ node n26 {
 	# Direcciones ip
 	ip -6 addr add 2001:1200:0:21f2::/64 dev eth0
 	ip -6 addr add fd01:1200:0:21f2::/64 dev eth0
+	
+	#default route
+	ip -6 route add default via fd01:1200:0:21f2::3 dev eth0
 	}
     }
     services {DefaultRoute SSH UserDefined}
@@ -988,6 +1004,9 @@ node n27 {
 	#!/bin/sh
 	# Direcciones ip
 	ip -6 addr add 2001:1200:0:21f2::1/64 dev eth0
+	
+	#default route
+	ip -6 route add default via fd01:1200:0:21f2::3 dev eth0
 	}
     }
     services {DefaultRoute SSH UserDefined}
@@ -1019,8 +1038,8 @@ node n29 {
 	}
     }
     canvas c1
-    iconcoords {127.0 151.0}
-    labelcoords {127.0 183.0}
+    iconcoords {119.0 147.0}
+    labelcoords {119.0 179.0}
     interface-peer {e0 n4}
     interface-peer {e1 n5}
     interface-peer {e2 n1}
