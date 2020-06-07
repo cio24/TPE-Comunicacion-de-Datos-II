@@ -292,7 +292,6 @@ node n8 {
 	custom-command UserDefined
 	config {
 	files=('router_5.sh', )
-	startidx=02001:1200:0:21f7::5
 	cmdup=('sh router_5.sh', )
 	}
     }
