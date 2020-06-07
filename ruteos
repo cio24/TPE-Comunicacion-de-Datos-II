@@ -1,0 +1,105 @@
+
+
+
+ruteos
+
+1
+#default rooute
+ip -6 route add default via fd01:1200:0:21f7::b dev eth0
+
+
+2
+#default rooute
+
+#ruteo especifico
+ip -6 route add fd01:1200:0:21f3::/64 via fd01:1200:0:21f7::10 dev eth0
+ip -6 route add fd01:1200:0:21f5::/64 via fd01:1200:0:21f7::10 dev eth0
+ip -6 route add fd01:1200:0:21f6::/64 via fd01:1200:0:21f7::10 dev eth0
+ip -6 route add fd01:1200:0:21f2::/64 via fd01:1200:0:21f7::12 dev eth1
+ip -6 route add fd01:1200:0:21f0::/64 fd01:1200:0:21f7::12 dev eth1
+ip -6 route add fd01:1200:0:21f1::/64 fd01:1200:0:21f7::12 dev eth1
+ip -6 route add fd01:1200:0:21f7::e/127 via fd01:1200:0:21f7::10 dev eth0
+ip -6 route add fd01:1200:0:21f7::8/127 via fd01:1200:0:21f7::10 dev eth0
+ip -6 route add fd01:1200:0:21f7::c/127 via fd01:1200:0:21f7::10 dev eth0
+ip -6 route add fd01:1200:0:21f7::6/127 via fd01:1200:0:21f7::12 dev eth1
+ip -6 route add fd01:1200:0:21f7::a/127 via fd01:1200:0:21f7::12 dev eth1
+ip -6 route add fd01:1200:0:21f7::4/127 via fd01:1200:0:21f7::12 dev eth1
+ip -6 route add fd01:1200:0:21f7::2/127 via fd01:1200:0:21f7::12 dev eth1
+ip -6 route add fd01:1200:0:21f7::/127 via fd01:1200:0:21f7::12 dev eth1
+
+
+3
+#default rooute
+ip -6 route add default via fd01:1200:0:21f7::11 dev eth2
+
+#ruteo especifico
+ip -6 route add fd01:1200:0:21f3::/64 via fd01:1200:0:21f7::e dev eth0
+ip -6 route add fd01:1200:0:21f5::/64 via fd01:1200:0:21f7::e dev eth0
+ip -6 route add fd01:1200:0:21f6::/64 via fd01:1200:0:21f7::e dev eth0
+ip -6 route add fd01:1200:0:21f2::/64 via fd01:1200:0:21f7::c dev eth1
+ip -6 route add fd01:1200:0:21f1::/64 via fd01:1200:0:21f7::c dev eth1
+ip -6 route add fd01:1200:0:21f0::/64 via fd01:1200:0:21f7::c dev eth1
+ip -6 route add fd01:1200:0:21f7::/127 via fd01:1200:0:21f7::e dev eth0
+ip -6 route add fd01:1200:0:21f7::2/127 via fd01:1200:0:21f7::e dev eth0
+ip -6 route add fd01:1200:0:21f7::4/127 via fd01:1200:0:21f7::e dev eth0
+ip -6 route add fd01:1200:0:21f7::8/127 via fd01:1200:0:21f7::e dev eth0
+ip -6 route add fd01:1200:0:21f7::6/127 via fd01:1200:0:21f7::c dev eth1
+ip -6 route add fd01:1200:0:21f7::a/127 via fd01:1200:0:21f7::c dev eth1
+
+
+4
+#default rooute
+ip -6 route add default via fd01:1200:0:21f7::13 dev eth3
+
+#ruteo especifico
+ip -6 route add fd01:1200:0:21f2::/64 via fd01:1200:0:21f7::a dev eth1
+ip -6 route add fd01:1200:0:21f5::/64 via fd01:1200:0:21f7::d dev eth2
+ip -6 route add fd01:1200:0:21f6::/64 via fd01:1200:0:21f7::d dev eth2
+ip -6 route add fd01:1200:0:21f0::/64 fd01:1200:0:21f7::6 dev eth0
+ip -6 route add fd01:1200:0:21f1::/64 fd01:1200:0:21f7::6 dev eth0
+ip -6 route add fd01:1200:0:21f3::/64 via fd01:1200:0:21f7::8 dev eth0
+ip -6 route add fd01:1200:0:21f7::e/127 via fd01:1200:0:21f7::d dev eth2
+ip -6 route add fd01:1200:0:21f7::8/127 via fd01:1200:0:21f7::d dev eth2
+ip -6 route add fd01:1200:0:21f7::4/127 via fd01:1200:0:21f7::6 dev eth0
+ip -6 route add fd01:1200:0:21f7::2/127 via fd01:1200:0:21f7::6 dev eth0
+ip -6 route add fd01:1200:0:21f7::/127 via fd01:1200:0:21f7::6 dev eth0
+
+
+5
+#default rooute
+ip -6 route add default via fd01:1200:0:21f7::7 dev eth1
+
+#ruteo espeficico
+ip -6 route add fd01:1200:0:21f0::/64 via fd01:1200:0:21f7::4 dev eth0
+ip -6 route add fd01:1200:0:21f1::/64 via fd01:1200:0:21f7::4 dev eth0
+ip -6 route add fd01:1200:0:21f7::2/127 via fd01:1200:0:21f7::4 dev eth0
+ip -6 route add fd01:1200:0:21f7::/127 via fd01:1200:0:21f7::4 dev eth0
+ip -6 rule add priority 100 from fd01:1200:0:21f3::/64 table 25
+ip -6 route add default via fd01:1200:0:21f7::9 table 25
+
+
+6
+ip -6 route add default via fd01:1200:0:21f7::5 dev eth2
+ip -6 route add fd01:1200:0:21f0::/64 via fd01:1200:0:21f7:: dev eth1
+p -6 route add fd01:1200:0:21f1::/64 via fd01:1200:0:21f7::2 dev eth0
+
+
+7
+ip -6 route add default via fd01:1200:0:21f7::3 dev eth0
+
+
+8
+ip -6 route add default via fd01:1200:0:21f7::1 dev eth0
+
+
+9
+#default route
+ip -6 route add default via fd01:1200:0:21f7::f dev eth1
+
+#ruteo especifico
+ip -6 route add fd01:1200:0:21f0::/64 via fd01:1200:0:21f7::8 dev eth0
+ip -6 route add fd01:1200:0:21f1::/64 via fd01:1200:0:21f7::8 dev eth0
+ip -6 route add fd01:1200:0:21f3::/64 via fd01:1200:0:21f7::8 dev eth0
+ip -6 route add fd01:1200:0:21f7::/127 via fd01:1200:0:21f7::8 dev eth0
+ip -6 route add fd01:1200:0:21f7::2/127 via fd01:1200:0:21f7::8 dev eth0
+ip -6 route add fd01:1200:0:21f7::4/127 via fd01:1200:0:21f7::8 dev eth0
