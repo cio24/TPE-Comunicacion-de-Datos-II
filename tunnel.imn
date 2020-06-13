@@ -5,21 +5,21 @@ node n1 {
 	hostname n1
 	!
 	interface eth0
-	 ipv6 address 2001:0::20/64
+	 ipv6 address fd:1::1/64
 	!
     }
     canvas c1
     iconcoords {67.0 268.0}
     labelcoords {67.0 300.0}
     interface-peer {eth0 n2}
+    services {DefaultRoute UserDefined}
     custom-config {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 route add default via 2001:0::1 dev eth0', )
+	cmdup=('ip -6 addr add fd:1::1/64 dev eth0', 'ip -6 route add default via fd:1::2 dev eth0', )
 	}
     }
-    services {DefaultRoute UserDefined}
 }
 
 node n2 {
@@ -29,10 +29,10 @@ node n2 {
 	hostname n2
 	!
 	interface eth1
-	 ip address 10.0.1.1/24
+	 ip address 150.0.0.1/30
 	!
 	interface eth0
-	 ipv6 address 2001:0::1/64
+	 ipv6 address fd:1::2/64
 	!
     }
     canvas c1
@@ -45,7 +45,7 @@ node n2 {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip tunnel add siteE mode sit remote 10.0.2.2 local 10.1.1.1', 'ip link set siteE up', 'ip -6 route add default dev siteE', 'ip route add 10.0.2.0/24 via 10.0.1.2 dev eth1', )
+	cmdup=('ifconfig eth1 150.0.0.1 up', 'ip route add default via 150.0.0.2', 'ip tunnel add site1 mode sit remote 201.0.0.1 local 150.0.0.1', 'ip link set site1 up', 'ip -6 route add default dev site1', 'ip -6 addr add fd:1::2/64 dev eth0', )
 	}
     }
 }
@@ -57,10 +57,10 @@ node n3 {
 	hostname n3
 	!
 	interface eth1
-	 ip address 10.0.2.1/24
+	 ip address 201.0.0.2/30
 	!
 	interface eth0
-	 ip address 10.0.1.2/24
+	 ip address 150.0.0.2/30
 	!
     }
     canvas c1
@@ -78,10 +78,10 @@ node n4 {
 	hostname n4
 	!
 	interface eth1
-	 ipv6 address 2001:3::1/64
+	 ipv6 address fd:2::2/64
 	!
 	interface eth0
-	 ip address 10.0.2.2/24
+	 ip address 201.0.0.1/30
 	!
     }
     canvas c1
@@ -94,7 +94,7 @@ node n4 {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip tunnel add siteH mode sit remote 10.0.1.1 local 10.0.2.2', 'ip link set siteH up', 'ip -6 route add default dev siteH', 'ip route add 10.0.1.0/24 via 10.0.2.1 dev eth0', )
+	cmdup=('ip route add default via 201.0.0.2', 'ip tunnel add site2 mode sit remote 150.0.0.1 local 201.0.0.1', 'ip link set site2 up', 'ip -6 route add default dev site2', 'ip -6 addr add fd:2::2/64 dev eth1', )
 	}
     }
 }
@@ -106,21 +106,21 @@ node n5 {
 	hostname n5
 	!
 	interface eth0
-	 ipv6 address 2001:3::20/64
+	 ipv6 address fd:2::1/64
 	!
     }
     canvas c1
     iconcoords {886.0 275.0}
     labelcoords {886.0 307.0}
     interface-peer {eth0 n4}
+    services {DefaultRoute UserDefined}
     custom-config {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	cmdup=('ip -6 route add default via 2001:3::1 dev eth0', )
+	cmdup=('ip -6 addr add fd:2::1/64 dev eth0', 'ip -6 route add default via fd:2::2 dev eth0', )
 	}
     }
-    services {DefaultRoute UserDefined}
 }
 
 link l1 {
