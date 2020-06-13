@@ -612,8 +612,8 @@ node n13 {
 	!
     }
     canvas c1
-    iconcoords {816.0 294.0}
-    labelcoords {816.0 326.0}
+    iconcoords {802.0 309.0}
+    labelcoords {802.0 341.0}
     interface-peer {eth0 n12}
     interface-peer {eth1 n9}
     services {IPForward UserDefined}
@@ -635,9 +635,11 @@ node n13 {
 	ip -6 addr add 2001:1200:0:21f7::13/127 dev eth1
 	ip -6 addr add fd01:1200:0:21f7::11/127 dev eth0
 	ip -6 addr add fd01:1200:0:21f7::13/127 dev eth1
+	#
+	ifconfig eth2 10.0.0.1/24 up
 	
 	#default route add default via 10.0.0.2 dev eth2
-	ip -6 route default 
+	#ip -6 route default 
 	
 	#ruteo especifico
 	ip -6 route add fd01:1200:0:21f3::/64 via fd01:1200:0:21f7::10 dev eth0
@@ -669,6 +671,12 @@ node n13 {
 	ip -6 route add 2001:1200:0:21f7::4/127 via 2001:1200:0:21f7::12 dev eth1
 	ip -6 route add 2001:1200:0:21f7::2/127 via 2001:1200:0:21f7::12 dev eth1
 	ip -6 route add 2001:1200:0:21f7::/127 via 2001:1200:0:21f7::12 dev eth1
+	
+	#tunel 
+	ip route add default via 10.0.0.2 dev eth2
+	ip tunnel add site1 mode sit remote 10.0.2.2 local 10.0.0.1
+	ip link set site1 up
+	ip -6 route add default dev site1
 	}
     }
     interface-peer {eth2 n14}
@@ -688,11 +696,30 @@ node n14 {
 	!
     }
     canvas c1
-    iconcoords {923.0 303.0}
-    labelcoords {923.0 334.0}
-    services {IPForward}
+    iconcoords {923.0 142.0}
+    labelcoords {923.0 173.0}
+    services {IPForward UserDefined}
     interface-peer {eth0 n13}
     interface-peer {eth1 n15}
+    custom-config {
+	custom-config-id service:UserDefined
+	custom-command UserDefined
+	config {
+	files=('isp_intranet.sh', )
+	cmdup=('sh isp_intranet.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:isp_intranet.sh
+	custom-command isp_intranet.sh
+	config {
+	#!/bin/sh
+	ifconfig eth0 10.0.0.2/24 up
+	ifconfig eth0 10.0.1.1/24 up
+	#
+	ip route add default via 10.0.1.2 dev eth1
+	}
+    }
 }
 
 node n15 {
@@ -709,11 +736,31 @@ node n15 {
 	!
     }
     canvas c1
-    iconcoords {967.0 407.0}
-    labelcoords {967.0 439.0}
-    services {IPForward}
+    iconcoords {925.0 337.0}
+    labelcoords {925.0 369.0}
+    services {IPForward UserDefined}
     interface-peer {eth0 n14}
     interface-peer {eth1 n16}
+    custom-config {
+	custom-config-id service:UserDefined
+	custom-command UserDefined
+	config {
+	files=('isp_casa.sh', )
+	cmdup=('sh isp_casa.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:UserDefined:isp_casa.sh
+	custom-command isp_casa.sh
+	config {
+	#!/bin/sh
+	ifconfig eth0 10.0.1.2/24 up
+	ifconfig eht1 10.0.2.1/24 up
+	# ruteos
+	ip route add 10.0.0.0/24 via 10.0.1.1 dev eth0
+	ip route add default via 10.0.2.2 dev eth1
+	}
+    }
 }
 
 node n16 {
@@ -729,8 +776,8 @@ node n16 {
 	!
     }
     canvas c1
-    iconcoords {967.0 496.0}
-    labelcoords {967.0 528.0}
+    iconcoords {914.0 470.0}
+    labelcoords {914.0 502.0}
     interface-peer {eth1 n17}
     services {IPForward UserDefined}
     custom-config {
@@ -749,6 +796,15 @@ node n16 {
 	# Direcciones ip
 	ip -6 addr add 2001:1200:0:21f4::/64 dev eth1
 	ip -6 addr add fd01:1200:0:21f4::/64 dev eth1
+	# 
+	ifconfig eth0 10.0.2.2/24 up
+	ip route add default via 10.0.2.1 dev eth0
+	
+	# tunnel
+	ip route add default via 201.0.0.2 dev eth0
+	ip tunnel add site2 mode sit remote 10.0.0.1 local 10.0.2.2
+	ip link set site2 up
+	ip -6 route add default dev site2
 	}
     }
     interface-peer {eth0 n15}
@@ -764,8 +820,8 @@ node n17 {
 	!
     }
     canvas c1
-    iconcoords {969.0 586.0}
-    labelcoords {971.0 617.0}
+    iconcoords {912.0 614.0}
+    labelcoords {889.0 656.0}
     interface-peer {eth0 n16}
     custom-config {
 	custom-config-id service:UserDefined
