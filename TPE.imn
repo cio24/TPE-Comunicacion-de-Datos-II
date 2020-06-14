@@ -30,6 +30,8 @@ node n1 {
 	# Direcciones ip
 	ip -6 addr add 2001:1200:0:21f1::/64 dev eth0
 	ip -6 addr add fd01:1200:0:21f1::/64 dev eth0
+	ip -6 addr add 2001:1200:0:21f0::2/64 dev eth1
+	ip -6 addr add fd01:1200:0:21f0::2/64 dev eth1
 	
 	#default route
 	ip -6 route add default via fd01:1200:0:21f1::2 dev eth0
@@ -651,8 +653,8 @@ node n13 {
 	ip -6 route add fd01:1200:0:21f5::/64 via fd01:1200:0:21f7::10 dev eth0
 	ip -6 route add fd01:1200:0:21f6::/64 via fd01:1200:0:21f7::10 dev eth0
 	ip -6 route add fd01:1200:0:21f2::/64 via fd01:1200:0:21f7::12 dev eth1
-	ip -6 route add fd01:1200:0:21f0::/64 fd01:1200:0:21f7::12 dev eth1
-	ip -6 route add fd01:1200:0:21f1::/64 fd01:1200:0:21f7::12 dev eth1
+	ip -6 route add fd01:1200:0:21f0::/64 via fd01:1200:0:21f7::12 dev eth1
+	ip -6 route add fd01:1200:0:21f1::/64 via fd01:1200:0:21f7::12 dev eth1
 	ip -6 route add fd01:1200:0:21f7::e/127 via fd01:1200:0:21f7::10 dev eth0
 	ip -6 route add fd01:1200:0:21f7::8/127 via fd01:1200:0:21f7::10 dev eth0
 	ip -6 route add fd01:1200:0:21f7::c/127 via fd01:1200:0:21f7::10 dev eth0
@@ -666,8 +668,8 @@ node n13 {
 	ip -6 route add 2001:1200:0:21f5::/64 via 2001:1200:0:21f7::10 dev eth0
 	ip -6 route add 2001:1200:0:21f6::/64 via 2001:1200:0:21f7::10 dev eth0
 	ip -6 route add 2001:1200:0:21f2::/64 via 2001:1200:0:21f7::12 dev eth1
-	ip -6 route add 2001:1200:0:21f0::/64 2001:1200:0:21f7::12 dev eth1
-	ip -6 route add 2001:1200:0:21f1::/64 2001:1200:0:21f7::12 dev eth1
+	ip -6 route add 2001:1200:0:21f0::/64 via 2001:1200:0:21f7::12 dev eth1
+	ip -6 route add 2001:1200:0:21f1::/64 via 2001:1200:0:21f7::12 dev eth1
 	ip -6 route add 2001:1200:0:21f7::e/127 via 2001:1200:0:21f7::10 dev eth0
 	ip -6 route add 2001:1200:0:21f7::8/127 via 2001:1200:0:21f7::10 dev eth0
 	ip -6 route add 2001:1200:0:21f7::c/127 via 2001:1200:0:21f7::10 dev eth0
