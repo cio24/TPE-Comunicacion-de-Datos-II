@@ -481,8 +481,8 @@ node n11 {
 	!
     }
     canvas c1
-    iconcoords {575.0 476.0}
-    labelcoords {575.0 508.0}
+    iconcoords {575.0 475.0}
+    labelcoords {575.0 507.0}
     interface-peer {eth0 n8}
     interface-peer {eth1 n12}
     interface-peer {eth2 n24}
@@ -527,10 +527,6 @@ node n11 {
 	ip -6 route add 2001:1200:0:21f7::2/127 via 2001:1200:0:21f7::8 dev eth0
 	ip -6 route add 2001:1200:0:21f7::4/127 via 2001:1200:0:21f7::8 dev eth0
 	
-	# excepciones
-	ip -6 rule add fwmark 4 unreachable
-	ip6tables -t filter -A FORWARD -s fd01:1200:0:21f5::/64 ! -d fd01:1200:0:21f0::/60 -j REJECT --reject-with adm-prohibited
-	ip6tables -t filter -A FORWARD -s fd01:1200:0:21f6::/64 ! -d fd01:1200:0:21f0::/60 -j REJECT --reject-with adm-prohibited
 	}
     }
 }
