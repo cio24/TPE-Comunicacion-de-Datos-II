@@ -526,6 +526,11 @@ node n11 {
 	ip -6 route add 2001:1200:0:21f7::/127 via 2001:1200:0:21f7::8 dev eth0
 	ip -6 route add 2001:1200:0:21f7::2/127 via 2001:1200:0:21f7::8 dev eth0
 	ip -6 route add 2001:1200:0:21f7::4/127 via 2001:1200:0:21f7::8 dev eth0
+	
+	# excepciones
+	ip -6 rule add fwmark 4 unreachable
+	ip6tables -t filter -A FORWARD -s fd01:1200:0:21f5::/64 ! -d fd01:1200:0:21f0::/60 -j REJECT --reject-with adm-prohibited
+	ip6tables -t filter -A FORWARD -s fd01:1200:0:21f6::/64 ! -d fd01:1200:0:21f0::/60 -j REJECT --reject-with adm-prohibited
 	}
     }
 }
@@ -544,8 +549,8 @@ node n12 {
 	!
     }
     canvas c1
-    iconcoords {758.0 384.0}
-    labelcoords {758.0 416.0}
+    iconcoords {759.0 384.0}
+    labelcoords {759.0 416.0}
     interface-peer {eth0 n11}
     interface-peer {eth1 n9}
     interface-peer {eth2 n13}
@@ -865,8 +870,8 @@ node n18 {
 	!
     }
     canvas c1
-    iconcoords {737.0 571.0}
-    labelcoords {737.0 603.0}
+    iconcoords {738.0 570.0}
+    labelcoords {738.0 602.0}
     interface-peer {eth0 n24}
     custom-config {
 	custom-config-id service:UserDefined
